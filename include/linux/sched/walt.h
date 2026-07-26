@@ -16,6 +16,7 @@ enum pause_client {
 	PAUSE_THERMAL	= 0x02,
 	PAUSE_HYP	= 0x04,
 	PAUSE_SBT	= 0x08,
+	PAUSE_CLIENT_MAX,
 };
 
 #define NO_BOOST 0
@@ -122,6 +123,10 @@ struct walt_task_struct {
 	u64				active_time;
 	u64				last_win_size;
 	int				boost;
+#if IS_ENABLED(CONFIG_NOTHING_PERFORMANCE_FEATURE_WALT)
+	int				nt_boost;
+	int				policy_backup;
+#endif /* CONFIG_NOTHING_PERFORMANCE_FEATURE_WALT */
 	bool				wake_up_idle;
 	bool				misfit;
 	bool				rtg_high_prio;

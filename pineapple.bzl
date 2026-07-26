@@ -2,6 +2,10 @@ load(":image_opts.bzl", "boot_image_opts")
 load(":msm_kernel_la.bzl", "define_msm_la")
 load(":target_variants.bzl", "la_variants")
 
+load("@nt_project_info//:dict.bzl",
+    "TARGET_PRODUCT",
+)
+
 target_name = "pineapple"
 
 def define_pineapple():
@@ -98,10 +102,14 @@ def define_pineapple():
         "drivers/mailbox/qcom-ipcc.ko",
         "drivers/mfd/qcom-i2c-pmic.ko",
         "drivers/mfd/qcom-spmi-pmic.ko",
+        "drivers/misc/haptic/hapticdrv.ko",
         "drivers/misc/bhs-irq-controller.ko",
         "drivers/misc/qseecom_proxy.ko",
+        "drivers/misc/st21nfc.ko",
         "drivers/mmc/host/cqhci.ko",
         "drivers/mmc/host/sdhci-msm.ko",
+        "drivers/nothing_stability/nothing_bootloader_log.ko",
+        "drivers/nothing_stability/nothing_restart_handler.ko",
         "drivers/nvmem/nvmem_qcom-spmi-sdam.ko",
         "drivers/nvmem/nvmem_qfprom.ko",
         "drivers/pci/controller/pci-msm-drv.ko",
@@ -126,6 +134,9 @@ def define_pineapple():
         "drivers/regulator/debug-regulator.ko",
         "drivers/regulator/proxy-consumer.ko",
         "drivers/regulator/qcom_pm8008-regulator.ko",
+        "drivers/regulator/wl28681-regulator.ko",
+        "drivers/regulator/sgm38120-regulator.ko",
+        "drivers/regulator/wr1241-regulator.ko",
         "drivers/regulator/qpnp-amoled-regulator.ko",
         "drivers/regulator/qpnp-lcdb-regulator.ko",
         "drivers/regulator/qti-fixed-regulator.ko",
@@ -224,6 +235,7 @@ def define_pineapple():
         "drivers/soc/qcom/sys_pm_vx.ko",
         "drivers/soc/qcom/sysmon_subsystem_stats.ko",
         "drivers/soc/qcom/tmecom/tmecom-intf.ko",
+        "drivers/soc/qcom/touchpanel_event_notify.ko",
         "drivers/soc/qcom/wcd_usbss_i2c.ko",
         "drivers/spi/spi-msm-geni.ko",
         "drivers/spmi/spmi-pmic-arb.ko",
@@ -291,27 +303,19 @@ def define_pineapple():
         "net/wireless/cfg80211.ko",
         "sound/soc/codecs/snd-soc-hdmi-codec.ko",
         "sound/usb/snd-usb-audio-qmi.ko",
-    ]
-
-    _pineapple_consolidate_in_tree_modules = _pineapple_in_tree_modules + [
-        # keep sorted
-        "drivers/cpuidle/governors/qcom_simple_lpm.ko",
-        "drivers/hwtracing/coresight/coresight-etm4x.ko",
-        "drivers/misc/lkdtm/lkdtm.ko",
-        "drivers/usb/misc/ehset.ko",
-        "drivers/usb/misc/lvstest.ko",
-        "kernel/locking/locktorture.ko",
-        "kernel/rcu/rcutorture.ko",
-        "kernel/torture.ko",
-        "lib/atomic64_test.ko",
-        "lib/test_user_copy.ko",
-    ]
-
-    kernel_vendor_cmdline_extras = [
-        # do not sort
-        "console=ttyMSM0,115200n8",
-        "qcom_geni_serial.con_enabled=1",
-        "bootconfig",
+        "drivers/nothing_stability/nothing_writeback_kmsg.ko",
+        "drivers/nothing_stability/nothing_check_parts.ko",
+        "drivers/nothing_thermal/nothing_virtual_ntc.ko",
+        "drivers/nothing_stability/nothing_disk_usage.ko",
+        "drivers/nothing_stability/nothing_readahead_trace.ko",
+        "drivers/nothing_stability/nothing_task_meminfo.ko",
+        "drivers/nothing_stability/nothing_value_check.ko",
+        "drivers/nothing_stability/nothing_task_info.ko",
+        "drivers/nothing_stability/nothing_error_report.ko",
+        "drivers/nothing_stability/nothing_secure_element.ko",
+        "drivers/nothing_stability/nothing_rdump.ko",
+        "drivers/soc/qcom/nt_display_notifier.ko",
+        "drivers/nothing_performance/nothing_performance.ko",
     ]
 
     for variant in la_variants:

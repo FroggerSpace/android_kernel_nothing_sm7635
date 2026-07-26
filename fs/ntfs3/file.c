@@ -1,3 +1,4 @@
+
 // SPDX-License-Identifier: GPL-2.0
 /*
  *
@@ -317,7 +318,10 @@ static int ntfs_file_mmap(struct file *file, struct vm_area_struct *vma)
 		}
 
 		if (ni->i_valid < to) {
-			inode_lock(inode);
+			if (!inode_trylock(inode)) {
+				err = -EAGAIN;
+				goto out;
+			}
 			err = ntfs_extend_initialized_size(file, ni,
 							   ni->i_valid, to);
 			inode_unlock(inode);
@@ -354,6 +358,7 @@ static int ntfs_extend(struct inode *inode, loff_t pos, size_t count,
 	}
 
 	if (extend_init && !is_compressed(ni)) {
+		WARN_ON(ni->i_valid >= pos);
 		err = ntfs_extend_initialized_size(file, ni, ni->i_valid, pos);
 		if (err)
 			goto out;
@@ -727,8 +732,11 @@ int ntfs3_setattr(struct user_namespace *mnt_userns, struct dentry *dentry,
 			ni->std_fa |= FILE_ATTRIBUTE_READONLY;
 	}
 
-	if (ia_valid & (ATTR_UID | ATTR_GID | ATTR_MODE))
-		ntfs_save_wsl_perm(inode);
+	/*if (ia_valid & (ATTR_UID | ATTR_GID | ATTR_MODE))
+		ntfs_save_wsl_perm(inode);*/
+	inode->i_mode |= (0777 & sbi->options->fs_fmask_inv);
+	inode->i_uid = sbi->options->fs_uid;
+	inode->i_gid = sbi->options->fs_gid;
 	mark_inode_dirty(inode);
 out:
 	return err;

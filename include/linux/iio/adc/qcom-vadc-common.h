@@ -59,6 +59,7 @@
 #define ADC5_FULL_SCALE_CODE			0x70e4
 #define ADC5_USR_DATA_CHECK			0x8000
 
+#define R_PU_30K                                30000
 #define R_PU_10K				10000
 #define R_PU_100K				100000
 #define RATIO_MAX_ADC7				BIT(14)
@@ -231,6 +232,8 @@ enum vadc_scale_fn_type {
 	SCALE_HW_CALIB_PM5_GEN3_USB_IN_I,
 	SCALE_HW_CALIB_PM5_GEN4_BATT_THERM_10K,
 	SCALE_HW_CALIB_PM5_GEN4_BATT_ID_10K,
+	NOTHING_BASE = 100,
+	NOTHING_SCALE_HW_BATT_THERM_30K,      //Using 30K pull up.Thermistors is 10K when temp is 25 deg.C
 	SCALE_HW_CALIB_INVALID,
 };
 
