@@ -1039,6 +1039,13 @@ config REGULATOR_QCOM_PM8008
 	  When all seven of the PM8008 LDO regulators are disabled, the PM8008
 	  is put into a low power state.
 
+config REGULATOR_WL28681
+	tristate "WL28681 PMIC regulators"
+	help
+	  This driver provides support for the voltage regulators and top-level
+	  chip enablement, Inc. WL28681 PMIC chips. When all seven of the WL28681
+          LDO regulators are disabled, the WL28681 is put into a low power state.
+
 config REGULATOR_QCOM_RPM
 	tristate "Qualcomm RPM regulator driver"
 	depends on MFD_QCOM_RPM
@@ -1694,5 +1701,21 @@ config VIRTIO_REGULATOR
 	  Qualcomm Technologies Inc. virtual machine. Virtio regulator can vote
 	  regulator for pass through peripheral devices via regulator backend in
 	  host.
+
+config REGULATOR_SGM38120
+	tristate "SGM38120 PMIC regulators"
+	depends on MFD_I2C_PMIC
+	help
+	  This driver provides support for the voltage regulators and top-level
+	  chip enablement, Inc. SGM38120 PMIC chips. When all seven of the SGM38120
+          LDO regulators are disabled, the SGM38120 is put into a low power state.
+
+config REGULATOR_WR1241
+	tristate "WR1241 PMIC regulators"
+	depends on MFD_I2C_PMIC
+	help
+	  This driver provides support for the voltage regulators and top-level
+	  chip enablement, Inc. WR1241 PMIC chips. When all seven of the WR1241
+          LDO regulators are disabled, the WR1241 is put into a low power state.
 
 endif
