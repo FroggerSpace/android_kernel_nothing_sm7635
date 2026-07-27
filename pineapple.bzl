@@ -135,8 +135,6 @@ def define_pineapple():
         "drivers/regulator/proxy-consumer.ko",
         "drivers/regulator/qcom_pm8008-regulator.ko",
         "drivers/regulator/wl28681-regulator.ko",
-        "drivers/regulator/sgm38120-regulator.ko",
-        "drivers/regulator/wr1241-regulator.ko",
         "drivers/regulator/qpnp-amoled-regulator.ko",
         "drivers/regulator/qpnp-lcdb-regulator.ko",
         "drivers/regulator/qti-fixed-regulator.ko",
@@ -315,7 +313,6 @@ def define_pineapple():
         "drivers/nothing_stability/nothing_secure_element.ko",
         "drivers/nothing_stability/nothing_rdump.ko",
         "drivers/soc/qcom/nt_display_notifier.ko",
-        "drivers/nothing_performance/nothing_performance.ko",
     ]
 
     for variant in la_variants:

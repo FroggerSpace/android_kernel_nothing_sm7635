@@ -5,7 +5,6 @@
 #include <linux/module.h>
 #include <linux/reboot.h>
 #include <linux/panic_notifier.h>
-#include <linux/nothing_restart_handler.h>
 
 static unsigned shared_imem_restart_info_size = 0x80;
 
