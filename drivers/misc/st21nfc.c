@@ -174,8 +174,6 @@ static irqreturn_t st21nfc_clk_irq_threaded_handler(int irq, void *dev_id)
 	value = gpiod_get_value(st21nfc_dev->gpiod_clkreq) > 0 ? true : false;
 
 //Starting from here, ST native code adopts macro space due to project requirements
-//The above is the ST native code, which uses macro space due to project requirements
-
 	return IRQ_HANDLED;
 }
 

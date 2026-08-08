@@ -202,4 +202,8 @@ obj-$(CONFIG_REGULATOR_QTI_OCP_NOTIFIER) += qti-ocp-notifier.o
 obj-$(CONFIG_VIRTIO_REGULATOR) += virtio_regulator.o
 obj-$(CONFIG_REGULATOR_SPM) += spm-regulator.o
 
+#add for frogger
+obj-$(CONFIG_REGULATOR_SGM38120) += sgm38120-regulator.o
+obj-$(CONFIG_REGULATOR_WR1241) += wr1241-regulator.o
+
 ccflags-$(CONFIG_REGULATOR_DEBUG) += -DDEBUG

@@ -267,4 +267,3 @@ late_initcall(volt_detect_init);
 module_exit(volt_detect_exit);
 MODULE_DESCRIPTION("voltage detect function");
 MODULE_LICENSE("GPL v2");
-

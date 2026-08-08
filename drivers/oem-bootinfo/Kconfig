@@ -1,0 +1,27 @@
+#
+# OEM device bootinfo configuration
+#
+
+config OEM_BOOTINFO
+    tristate "bootinfo"
+    help
+	Say Y here if you want to enable bootinfo.
+	If unsure, say N.
+
+config OEM_HWINFO
+    tristate "hwinfo"
+    help
+	Say Y here if you want to enable hwinfo.
+	If unsure, say N.
+
+config OEM_CABLE
+    tristate "cable state detect driver"
+    help
+	Say Y here if you want to enable cable state.
+	If unsure, say N.
+
+config OEM_ERRCODE
+    tristate "errcode"
+    help
+	Say Y here if you want to enable errcode.
+	If unsure, say N.

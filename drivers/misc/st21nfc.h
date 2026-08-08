@@ -48,4 +48,3 @@ void st21nfc_unregister_st54spi_cb(void);
 
 // newer kernels since 5.4
 #define ACCESS_OK(x, y, z) access_ok(y, z)
-
