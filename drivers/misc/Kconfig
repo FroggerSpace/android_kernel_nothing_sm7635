@@ -605,6 +605,11 @@ config NFC_SE_STM
 	  This enables the gpio driver for STM NFC-SE chip based devices.
 	  This is for SPI connected version.
 
+config NT_OIS_VDD_CTRL
+	tristate "ois vdd control driver"
+	help
+	  NT OIS VDD Control Driver.
+
 config NT_RPMB_STATE
 	tristate "NT RPMB State Driver"
 	help
