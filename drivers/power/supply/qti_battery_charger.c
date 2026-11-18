@@ -455,8 +455,6 @@ struct battery_chg_dev {
 	u32				nt_ui_soc;
 	u32				glink_abnormal_cnt;
 #endif
-
-	unsigned int			num_usb_ports;
 };
 
 static const int battery_prop_map[BATT_PROP_MAX] = {
