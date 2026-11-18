@@ -470,7 +470,6 @@ static void __exit cleanup_virtual_temp(void)
 	tracepoint_synchronize_unregister();
 	device_remove_file(dev, &dev_attr_data);
 	platform_driver_unregister(&virtual_temp_platdrv);
-    device_remove_file(dev, &dev_attr_data);
     device_destroy(virtual_temp_class, MKDEV(100, 0));
     class_destroy(virtual_temp_class);
 }
